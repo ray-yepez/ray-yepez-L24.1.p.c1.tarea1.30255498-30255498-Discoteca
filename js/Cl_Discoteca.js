@@ -1,35 +1,35 @@
-export default Cl_Discoteca {
+export default class Cl_Discoteca {
     constructor(){
-        this.hombres = 0;
-        this.mujeres = 0;
-        this.md21 = 0;
-        this.recaudado = 0.00;
+        this._hombres = 0;
+        this._mujeres = 0;
+        this._md21 = 0;
+        this._recaudado = 0.00;
     }
 
     procsClt(cliente){
-        this.recaudado += cliente.precioEntrada();
-        if (cliente.sexo()=="F"){
-            this.mujeres += 1;
-            if (cliente.edad()>21){
-                this.md21 += 1;
+        this._recaudado += cliente.precioEntrada();
+        if (cliente.sexo=="F"){
+            this._mujeres += 1;
+            if (cliente.edad>21){
+                this._md21 += 1;
             }
         }else{
-            this.hombres += 1;
+            this._hombres += 1;
         }
     }
 
     recaudado(){
-        return this.recaudado;
+        return this._recaudado;
     }
 
     pctjRumberas(){
-        return (this.hombres+this.mujeres)*(this.md21/100.00);
+        return this._md21*(100.00/(this._hombres+this._mujeres));
     }
 
     mayoria(){
-        if (this.hombres>this.mujeres){
+        if (this._hombres>this._mujeres){
             return "MASCULINO";
-        }else if (this.hombres<this.mujeres) {
+        }else if (this._hombres<this._mujeres) {
             return "FEMENINO";
         } else {
             return "AMBOS POR IGUAL";
